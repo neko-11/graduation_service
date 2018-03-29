@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.ahut.Mappers.RecordMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.ahut.Entity.Record">
+    <!--
+      WARNING - @mbggenerated
+    -->
+      <id column="id" jdbcType="INTEGER" property="id" />
+      <result column="user_id" jdbcType="INTEGER" property="userId" />
+      <result column="arrive_time" jdbcType="TIMESTAMP" property="arriveTime" />
+      <result column="image" jdbcType="VARCHAR" property="image" />
+      <result column="user_name" jdbcType="VARCHAR" property="userName" />
+      <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+      <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+  </resultMap>
+
+    <select id="listRecord" parameterType="map" resultMap="BaseResultMap">
+        select r.id,u.user_name,u.user_code,d.department_name,r.arrive_time
+        from record r,user u,department d
+        where r.user_id = u.id
+        and u.department_id = d.id
+        <if test="userId != null ">
+            and r.user_id = #{userId}
+        </if>
+        <if test="userName != null ">
+        and u.user_name like concat('%',#{userName},'%')
+        </if>
+        <if test="departmentName != null ">
+            and d.department_name like concat('%',#{departmentName},'%')
+        </if>
+        <if test="startTime != null ">
+            and r.arrive_time &gt;= #{startTime}
+        </if>
+        <if test="endTime != null ">
+            and r.arrive_time &lt;= #{endTime}
+        </if>
+    </select>
+
+    <select id="getRecordById" parameterType="int" resultMap="BaseResultMap">
+        select r.id,u.user_name,u.user_code,d.department_name,r.arrive_time
+        from record r,user u,department d
+        where r.user_id = u.id
+        and u.department_id = d.id
+        and r.id = #{id}
+    </select>
+
+    <update id="updateRecord" parameterType="map">
+        update record set arrive_time=#{arriveTime} where id=#{id}
+    </update>
+
+</mapper>

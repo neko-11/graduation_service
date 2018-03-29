@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.ahut.Mappers.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.ahut.Entity.Department">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="department_code" jdbcType="VARCHAR" property="departmentCode" />
+  </resultMap>
+
+    <select id="getIdByName" parameterType="string" resultType="int">
+        select id from department where department_name = #{departmentName}
+    </select>
+</mapper>
