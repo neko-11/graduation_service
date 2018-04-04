@@ -7,6 +7,7 @@ import cn.edu.ahut.Mappers.RecordMapper;
 import cn.edu.ahut.Mappers.UserMapper;
 import cn.edu.ahut.Service.RecordService;
 import cn.edu.ahut.utils.Base64ToImg;
+import cn.edu.ahut.utils.DeleteFile;
 import cn.edu.ahut.utils.Result;
 import com.arcsoft.fd.FaceDetection;
 import com.github.pagehelper.PageHelper;
@@ -83,14 +84,15 @@ public class RecordServiceImpl implements RecordService {
                     jsonObject.put("arriveTime", time);
                     jsonArray.add(jsonObject);
                 }
-
             }
         }
         if (jsonArray.isEmpty()) {
+            DeleteFile.delete(path + File.separator + fileName);
             result.setCode(1);
             result.setMessage("No User");
             return result;
         }
+        DeleteFile.delete(path + File.separator + fileName);
         result.setCode(0);
         result.setMessage("No Error");
         result.setResult(jsonArray);
