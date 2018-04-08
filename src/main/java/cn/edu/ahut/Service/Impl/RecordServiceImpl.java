@@ -10,8 +10,6 @@ import cn.edu.ahut.utils.Base64ToImg;
 import cn.edu.ahut.utils.DeleteFile;
 import cn.edu.ahut.utils.Result;
 import com.arcsoft.fd.FaceDetection;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,17 +98,17 @@ public class RecordServiceImpl implements RecordService {
     }
 
     @Override
-    public Result listRecord(String userId, String userName, String departmentName,  String startTime, String endTime) {
+    public Result listRecord(String userId, String userName, String departmentName, String startTime, String endTime) {
         Result result = new Result();
         Map map = new HashMap();
         map.put("userId", userId);
         map.put("userName", userName);
         map.put("departmentName", departmentName);
-        if(startTime != null)
-            startTime = startTime+" 00:00:00";
+        if (startTime != null)
+            startTime = startTime + " 00:00:00";
         map.put("startTime", startTime);
-        if(endTime != null)
-            endTime = endTime+" 23:59:59";
+        if (endTime != null)
+            endTime = endTime + " 23:59:59";
         map.put("endTime", endTime);
         List<Record> list = recordMapper.listRecord(map);
         JSONArray array = new JSONArray();
@@ -118,8 +116,8 @@ public class RecordServiceImpl implements RecordService {
             Map<String, Object> map1 = new HashMap<>();
             map1.put("id", record.getId());
             map1.put("userName", record.getUserName());
-            map1.put("userCode",record.getUserCode());
-            map1.put("departmentName",record.getDepartmentName());
+            map1.put("userCode", record.getUserCode());
+            map1.put("departmentName", record.getDepartmentName());
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             map1.put("arriveTime", df.format(record.getArriveTime()));
             array.add(map1);
@@ -137,8 +135,8 @@ public class RecordServiceImpl implements RecordService {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", record.getId());
         jsonObject.put("userName", record.getUserName());
-        jsonObject.put("userCode",record.getUserCode());
-        jsonObject.put("departmentName",record.getDepartmentName());
+        jsonObject.put("userCode", record.getUserCode());
+        jsonObject.put("departmentName", record.getDepartmentName());
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         jsonObject.put("arriveTime", df.format(record.getArriveTime()));
         result.setCode(0);
