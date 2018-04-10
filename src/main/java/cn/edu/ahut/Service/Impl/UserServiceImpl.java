@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
             File tempFile = new File(path);
             if (!tempFile.exists()) {
                 user.setUserImg(null);
-            } else {
+            }else{
                 user.setUserImg("data:image/png;base64," + Base64ToImg.getImageStr(path));
             }
         }
@@ -227,9 +227,9 @@ public class UserServiceImpl implements UserService {
                 if (user != null) {
                     DeleteFile.delete(path + File.separator + fileName);
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("userName", user.getUserName());
-                    jsonObject.put("role", user.getRole());
-                    jsonObject.put("id", user.getId());
+                    jsonObject.put("userName",user.getUserName());
+                    jsonObject.put("role",user.getRole());
+                    jsonObject.put("id",user.getId());
                     result.setCode(0);
                     result.setMessage("No Error");
                     result.setResult(jsonObject);
