@@ -13,8 +13,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * Created by zhushuangfei on 2017/11/1.
  */
-@EnableSwagger2
 @Configuration
+@EnableSwagger2
 public class Swagger2Config {
 
     @Bean
@@ -31,7 +31,7 @@ public class Swagger2Config {
     //构建 api文档的详细信息函数
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder() //页面标题
-                .title("Spring Boot 测试使用 Swagger2 构建RESTful API")
+                .title("人脸识别签到 Swagger2 RESTful API")
                 .termsOfServiceUrl("http://localhost/") //创建人
                 .contact("zhushuangfei") //版本号
                 .version("1.0") //描述
