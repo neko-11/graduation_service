@@ -8,6 +8,7 @@ spring:
     password: 123456
 mybatis:
   mapper-locations: classpath:Mappers/*.xml
+
 logging:
   level: debug
   path: log
