@@ -207,7 +207,6 @@ public class UserServiceImpl implements UserService {
             }
             //保存图片到本地
             Base64ToImg.generateImage(image.substring(22), path + File.separator + fileName);
-
             List<String> list = new ArrayList<>();
             list.add(path + File.separator + fileName);
             List<FaceDetection.FaceGeoInfo> result1 = faceDetection.recognizeFacesBatch(list, "_", 0.5F);

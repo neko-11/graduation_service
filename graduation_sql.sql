@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : 192.168.10.81
@@ -37,17 +37,6 @@ CREATE TABLE `record` (
   `image` varchar(255) DEFAULT NULL COMMENT '签到图片',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for schedule
--- ----------------------------
-DROP TABLE IF EXISTS `schedule`;
-CREATE TABLE `schedule` (
-  `id` int(128) NOT NULL AUTO_INCREMENT,
-  `arrive_time` datetime DEFAULT NULL COMMENT '规定签到时间',
-  `leave_time` datetime DEFAULT NULL COMMENT '规定签退时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user
